@@ -56,7 +56,8 @@
             text-align: center;
             left: 5%;
             top: 0;
-            animation: slide-rev 0.2s ease-out;
+            transition: transform 0.2s ease-out;
+            transform: translateY(-25vw);
         }
 
         .message {
@@ -107,18 +108,15 @@
             border-right: 40vw solid transparent;
             top: 0;
             transform-origin: top;
-            animation: open-rev 2s;
+            transition: transform 0.5s;
         }
 
-        .container:hover .lid {
-            animation: open 0.5s;
-            animation-fill-mode: forwards;
+        .container.open .lid {
+            transform: rotateX(180deg);
         }
 
-        .container:hover .card {
-            animation: slide 0.2s;
-            animation-delay: 0.5s;
-            animation-fill-mode: forwards;
+        .container.open .card {
+            transform: translateY(0);
         }
 
         .shadow {
@@ -203,37 +201,6 @@
             text-align: center;
         }
 
-        @keyframes open {
-            100% {
-                transform: rotateX(180deg);
-            }
-        }
-
-        @keyframes slide {
-            100% {
-                transform: translateY(-25vw);
-                z-index: 2;
-            }
-        }
-
-        @keyframes open-rev {
-            from {
-                transform: rotateX(-180deg);
-            }
-        }
-
-        @keyframes slide-rev {
-            from {
-                transform: translateY(-25vw);
-            }
-        }
-
-        canvas {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
         @keyframes up {
             0% {
                 top: 300px;
@@ -263,7 +230,7 @@
 
 <body>
     <canvas id="c"></canvas>
-    <div class="container">
+    <div class="container" id="envelopeContainer">
         <div class="envelope"></div>
         <div class="card">
             <h1 class="message">Happy Birthday Rabiyya <br> Happy Birthday Sweetie aj ka din boht hi khas din hai bcz aj ap is duniya mai aai thi or mujy meri khushi mili thi. Rabiyya uh mean everything to meh Uh are the person i love most after my parents and I don't want to lose uh sweetie <br> <a href="#">Iloveuh💙</a>
@@ -285,6 +252,11 @@
     <div class='heart ten'></div>
     <div class='heart eleven'></div>
     <div class='heart twelve'></div>
+    <script>
+        document.getElementById('envelopeContainer').addEventListener('click', function () {
+            this.classList.toggle('open');
+        });
+    </script>
 </body>
 
 </html>
