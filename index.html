@@ -110,12 +110,14 @@
             animation: open-rev 2s;
         }
 
-        .container:hover .lid {
+        .container:hover .lid,
+        .container.open .lid {
             animation: open 0.5s;
             animation-fill-mode: forwards;
         }
 
-        .container:hover .card {
+        .container:hover .card,
+        .container.open .card {
             animation: slide 0.2s;
             animation-delay: 0.5s;
             animation-fill-mode: forwards;
@@ -263,7 +265,7 @@
 
 <body>
     <canvas id="c"></canvas>
-    <div class="container">
+    <div class="container" id="envelopeContainer">
         <div class="envelope"></div>
         <div class="card">
             <h1 class="message">Happy Birthday Rabiyya <br> Happy Birthday Sweetie aj ka din boht hi khas din hai bcz aj ap is duniya mai aai thi or mujy meri khushi mili thi. Rabiyya uh mean everything to meh Uh are the person i love most after my parents and I don't want to lose uh sweetie <br> <a href="#">Iloveuh💙</a>
@@ -285,6 +287,12 @@
     <div class='heart ten'></div>
     <div class='heart eleven'></div>
     <div class='heart twelve'></div>
+    <script>
+        // Automatically reveal the letter after 10 seconds
+        setTimeout(function() {
+            document.getElementById('envelopeContainer').classList.add('open');
+        }, 10000);
+    </script>
 </body>
 
 </html>
